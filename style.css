@@ -69,7 +69,7 @@ h1 { margin: 6px 0 8px; font-size: clamp(1.9rem, 5vw, 3.3rem); line-height: .95;
 .quick-links a { color: var(--text); font-size: .64rem; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
 .quick-links a:hover { color: var(--accent); border-color: var(--accent); }
 
-.section { padding: 28px 0; border-top: 1px solid var(--line); scroll-margin-top: 70px; }
+.section { padding: 28px 0; scroll-margin-top: 70px; }
 .section.compact { padding: 22px 0; }
 .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
 .section-head span { color: var(--dim); font-size: .58rem; }
@@ -88,14 +88,12 @@ p { color: var(--muted); font-size: .75rem; }
   gap: 14px;
   align-items: start;
   padding: 11px 4px;
-  border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 .experience-row:hover { background: rgba(180, 190, 160, .035); }
 .experience-main p { max-width: 700px; margin-top: 8px; }
 .experience-row:hover .arrow { color: var(--accent); }
 
-.project-list { border-top: 1px solid var(--line); }
 .project-row { display: grid; grid-template-columns: 1fr 28px; gap: 14px; align-items: start; padding: 11px 4px; border-bottom: 1px solid var(--line); }
 .project-row:hover { background: rgba(180, 190, 160, .035); }
 .project-row h3 { margin-bottom: 4px; }
@@ -180,7 +178,8 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
 .course { border-top:1px solid rgba(255,255,255,.14); padding-top:12px; }
 .course strong { font-weight:500; }
 .course p { margin:5px 0 0; color:rgba(255,255,255,.64); line-height:1.5; }
-.skills-list > div { border-top:1px solid rgba(255,255,255,.14); padding:12px 0; }
+.skills-list > div { padding:12px 0; }
+.skills-list > div + div { border-top:1px solid rgba(255,255,255,.14); }
 .skills-list > div:last-child { border-bottom:1px solid rgba(255,255,255,.14); }
 .skills-list span { display:block; font-size:.72rem; letter-spacing:.12em; opacity:.65; }
 .skills-list p { margin:4px 0 0; }
@@ -196,8 +195,7 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
 
 /* v11 refinements */
 .education-entry {
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
+  padding-top: 0;
 }
 
 .contact-location {
@@ -235,8 +233,7 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
 
 /* v12 contact header refinement */
 .contact-intro {
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
+  padding-top: 0;
 }
 
 .contact-intro p {
