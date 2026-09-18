@@ -1,18 +1,32 @@
 # Michael Yan — Engineering Portfolio
 
-A static GitHub Pages portfolio with a survival-horror / game-menu inspired interface.
+Resident Evil-inspired survival-horror menu aesthetic for a personal engineering portfolio.
 
-## Repository
+The visual references supplied for the design were used as inspiration only. This implementation uses original CSS-generated atmospheric background effects rather than game artwork or logos.
+
+## GitHub Pages
+
+Repository:
 
 `m-yan13/m-yan13.github.io`
 
-## Before publishing
+Upload `index.html` and `style.css` to the root of the repository and commit to `main`.
 
-Replace these placeholders in `index.html`:
+## Replace these placeholders
+
+In `index.html`, update:
 
 - `YOUR_EMAIL@example.com`
-- Resume `#` link
+- Resume link if you add one
 - LinkedIn `#` link
 - Project-page `#` links
 
-The site intentionally uses CSS and text treatment rather than copyrighted game artwork, logos, or assets.
+## Background motion
+
+The background is intentionally subtle:
+- slow camera/parallax-style scale and drift
+- drifting fog
+- slow rain texture
+- vignette and CRT scanline/noise treatment
+
+No JavaScript is required for the background animation.
