@@ -197,3 +197,43 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
   .education-header, .experience-header, .experience-meta { flex-direction:column; align-items:flex-start; gap:5px; }
   .course-list { grid-template-columns:1fr; }
 }
+
+
+/* v11 refinements */
+.education-entry {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.contact-location {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-location span {
+  font-size: .64rem;
+  letter-spacing: .12em;
+  color: var(--dim);
+}
+
+.contact-location strong {
+  font-size: .72rem;
+  font-weight: 500;
+}
+
+.contact-links {
+  margin-top: 16px;
+  gap: 18px 22px;
+}
+
+@media (max-width:700px) {
+  .contact-location {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
