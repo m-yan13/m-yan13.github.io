@@ -1,22 +1,18 @@
-# Michael Yan - Engineering Portfolio
+# Michael Yan — Engineering Portfolio
 
-Personal portfolio website for Michael Yan.
+A static GitHub Pages portfolio with a survival-horror / game-menu inspired interface.
 
-## GitHub Pages
+## Repository
 
-Repository name:
-
-`m-yan13.github.io`
-
-The site is a static HTML/CSS website and can be published through GitHub Pages.
+`m-yan13/m-yan13.github.io`
 
 ## Before publishing
 
-Replace the following placeholders in `index.html`:
+Replace these placeholders in `index.html`:
 
 - `YOUR_EMAIL@example.com`
-- LinkedIn `#` link
 - Resume `#` link
+- LinkedIn `#` link
 - Project-page `#` links
 
-You can also add project photos, diagrams, and detailed project pages later.
+The site intentionally uses CSS and text treatment rather than copyrighted game artwork, logos, or assets.
