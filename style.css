@@ -239,3 +239,42 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
 .contact-intro p {
   margin: 0;
 }
+
+/* v13 project write-up / article */
+.write-up { margin-top: 8px; }
+.article-section { padding-top: 30px; margin-top: 30px; border-top: 1px solid var(--line); }
+.article-section:first-child { margin-top: 0; }
+.article-kicker { color: var(--dim); font-size: .58rem; letter-spacing: .12em; margin-bottom: 6px; }
+.article-section h2 { font-size: .82rem; letter-spacing: .04em; font-weight: 500; color: var(--accent); margin-bottom: 14px; }
+.article-section h3 { font-size: .76rem; font-weight: 500; color: var(--text); margin: 24px 0 8px; }
+.article-section p { color: var(--muted); font-size: .78rem; line-height: 1.75; max-width: 700px; margin-bottom: 13px; }
+.article-section ul { max-width: 700px; margin: 0 0 13px; padding-left: 18px; }
+.article-section li { color: var(--muted); font-size: .78rem; line-height: 1.7; margin-bottom: 8px; }
+.article-section strong { color: var(--text); font-weight: 500; }
+.stat-row { display: flex; flex-wrap: wrap; gap: 24px; margin: 6px 0 20px; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); max-width: 700px; }
+.stat-row div { min-width: 120px; }
+.stat-row strong { display: block; font-size: 1rem; color: var(--accent); font-weight: 500; }
+.stat-row span { font-size: .6rem; color: var(--dim); letter-spacing: .06em; }
+
+.article-figure { margin: 20px 0 24px; max-width: 720px; }
+.article-figure.figure-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 720px; }
+.image-placeholder {
+  border: 1px dashed var(--line);
+  background: rgba(185, 198, 164, .035);
+  color: var(--dim);
+  font-size: .62rem;
+  letter-spacing: .03em;
+  line-height: 1.6;
+  padding: 30px 16px;
+  text-align: center;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-placeholder b { color: var(--muted); font-weight: 500; }
+.article-figure figcaption { margin-top: 8px; font-size: .62rem; color: var(--dim); line-height: 1.5; }
+
+@media (max-width: 700px) {
+  .article-figure.figure-pair { grid-template-columns: 1fr; }
+}
