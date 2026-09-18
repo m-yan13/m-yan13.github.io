@@ -157,3 +157,28 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
   .experience-header, .experience-meta { flex-direction:column; gap:4px; }
   .course-list { grid-template-columns:1fr; }
 }
+
+/* v9 refinements: compact technical portfolio, inspired by the reference site's hierarchy */
+.section { margin-top: 82px; margin-bottom: 82px; }
+.section-heading { display:flex; align-items:center; gap:14px; margin-bottom:24px; }
+.section-heading h2 { margin:0; font-size:.78rem; letter-spacing:.16em; font-weight:500; }
+.section-rule { height:1px; flex:1; background:rgba(255,255,255,.14); }
+.education-header, .experience-header { display:flex; align-items:baseline; justify-content:space-between; gap:24px; }
+.education-header h3, .experience-header h3 { margin:0; font-weight:500; }
+.education-header span, .experience-meta { color:rgba(255,255,255,.64); font-size:.82rem; }
+.experience-meta { display:flex; justify-content:space-between; margin-top:5px; }
+.coursework { margin-top:34px; }
+.coursework > h3 { margin:0 0 16px; font-size:.76rem; letter-spacing:.12em; text-transform:uppercase; font-weight:500; }
+.course-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px 36px; }
+.course { border-top:1px solid rgba(255,255,255,.14); padding-top:12px; }
+.course strong { font-weight:500; }
+.course p { margin:5px 0 0; color:rgba(255,255,255,.64); line-height:1.5; }
+.skills-list > div { border-top:1px solid rgba(255,255,255,.14); padding:12px 0; }
+.skills-list > div:last-child { border-bottom:1px solid rgba(255,255,255,.14); }
+.skills-list span { display:block; font-size:.72rem; letter-spacing:.12em; opacity:.65; }
+.skills-list p { margin:4px 0 0; }
+@media (max-width:700px) {
+  .section { margin-top:58px; margin-bottom:58px; }
+  .education-header, .experience-header, .experience-meta { flex-direction:column; align-items:flex-start; gap:5px; }
+  .course-list { grid-template-columns:1fr; }
+}
