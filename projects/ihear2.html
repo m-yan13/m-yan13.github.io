@@ -1,47 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="iHEAR2++ project — Michael Yan engineering portfolio.">
-  <title>iHEAR2++ | Michael Yan</title>
-  <link rel="stylesheet" href="../style.css">
-</head>
-<body>
-  <div class="background" aria-hidden="true">
-    <div class="bg-image"></div>
-    <div class="fog fog-a"></div>
-    <div class="fog fog-b"></div>
-    <div class="rain"></div>
-    <div class="vignette"></div>
-  </div>
-
-  <header class="topbar">
-    <a href="../index.html" class="wordmark">MICHAEL YAN</a>
-    <div class="topbar-right"><span>PROJECT</span><span class="divider">|</span><span>DETAIL</span></div>
-  </header>
-
-  <main class="project-page">
-    <div class="project-wrap">
-      <a class="project-crumb" href="../index.html#projects">← BACK TO PROJECTS</a>
-
-      <header class="project-header">
-        <div class="project-kicker">HARDWARE / EMBEDDED SYSTEMS</div>
-        <h1>iHEAR2++</h1>
-        <p class="project-intro">A low-cost portable acoustic measurement system built around synchronized multi-channel acquisition.</p>
-        <div class="project-meta"><div class="project-meta-item"><span>FOCUS</span><strong>Hardware + embedded systems</strong></div><div class="project-meta-item"><span>CORE</span><strong>STM32H723VGT6</strong></div><div class="project-meta-item"><span>STATUS</span><strong>Tested + measured</strong></div></div>
-      </header>
-
-      <div class="project-section-title">PROJECT RECORD</div>
-      <section class="detail-grid">
-        <article class="detail-box"><h2>OVERVIEW</h2><p>Designed a portable acoustic measurement system using a five-microphone array and an STM32H723VGT6 control PCB. The system synchronously acquires and transfers five channels of PDM microphone data to a PC.</p></article><article class="detail-box"><h2>TESTING</h2><p>Compared measured noise reduction from multi-acquisition averaging against the theoretical expectation. Across three recordings, averaging produced 3.85× noise reduction, corresponding to 11.71 dB.</p></article><article class="detail-box"><h2>SIGNAL INTEGRITY</h2><p>Investigated data-clock interference and used shielded cabling together with source-series termination to reduce crosstalk by approximately 80%, bringing interference below the target threshold.</p></article><article class="detail-box"><h2>TOOLS</h2><p>STM32 · KiCad · PDM · PCB DESIGN · EMBEDDED C · TESTING</p></article>
-      </section>
-
-      <div class="project-footer">
-        <a class="back-next" href="../index.html#projects">← RETURN TO PROJECTS</a>
-        <span class="project-index">01 / 04</span>
-      </div>
-    </div>
-  </main>
-</body>
-</html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="iHEAR2++ — Michael Yan engineering portfolio."><title>iHEAR2++ | Michael Yan</title><link rel="stylesheet" href="../style.css"></head>
+<body><div class="background" aria-hidden="true"></div>
+<header class="topbar"><a href="../index.html#about" class="wordmark">MICHAEL YAN</a><nav class="topnav"><a href="../index.html#about">ABOUT</a><a href="../index.html#projects">PROJECTS</a><a href="../index.html#contact">CONTACT</a></nav></header>
+<main class="project-page"><div class="project-wrap"><a class="project-crumb" href="../index.html#projects">← BACK TO PROJECTS</a>
+<header class="project-header"><div class="project-kicker">HARDWARE / EMBEDDED SYSTEMS</div><h1>iHEAR2++</h1><p class="project-intro">A low-cost portable acoustic measurement system built around synchronized multi-channel acquisition.</p><div class="project-meta"><div class="project-meta-item"><span>FOCUS</span><strong>Hardware + embedded</strong></div><div class="project-meta-item"><span>CORE</span><strong>STM32H723VGT6</strong></div><div class="project-meta-item"><span>STATUS</span><strong>Tested + measured</strong></div></div></header>
+<div class="project-section-title">PROJECT NOTES</div><section class="detail-grid"><article class="detail-box"><h2>Overview</h2><p>Designed a portable acoustic measurement system using a five-microphone array and an STM32H723VGT6 control PCB. The system synchronously acquires and transfers five channels of PDM microphone data to a PC.</p></article><article class="detail-box"><h2>Testing</h2><p>Across three recordings, multi-acquisition averaging produced 3.85× noise reduction, corresponding to 11.71 dB.</p></article><article class="detail-box"><h2>Signal integrity</h2><p>Shielded cabling and source-series termination reduced data-clock crosstalk by approximately 80%, bringing interference below the target threshold.</p></article><article class="detail-box"><h2>Tools</h2><p>STM32 · KiCad · PDM · PCB design · Embedded C · Testing</p></article></section>
+<div class="project-footer"><a class="back-next" href="../index.html#projects">← RETURN TO PROJECTS</a><span class="project-index">01 / 04</span></div></div></main></body></html>
