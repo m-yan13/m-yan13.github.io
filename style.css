@@ -81,10 +81,23 @@ p { color: var(--muted); font-size: .75rem; }
 .simple-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; padding: 9px 0; }
 .simple-row p { margin-top: 6px; max-width: 700px; }
 
+
+.experience-row {
+  display: grid;
+  grid-template-columns: 1fr 28px;
+  gap: 14px;
+  align-items: start;
+  padding: 11px 4px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.experience-row:hover { background: rgba(180, 190, 160, .035); }
+.experience-main p { max-width: 700px; margin-top: 8px; }
+.experience-row:hover .arrow { color: var(--accent); }
+
 .project-list { border-top: 1px solid var(--line); }
-.project-row { display: grid; grid-template-columns: 36px 1fr 28px; gap: 14px; align-items: start; padding: 11px 4px; border-bottom: 1px solid var(--line); }
+.project-row { display: grid; grid-template-columns: 1fr 28px; gap: 14px; align-items: start; padding: 11px 4px; border-bottom: 1px solid var(--line); }
 .project-row:hover { background: rgba(180, 190, 160, .035); }
-.project-num { color: var(--dim); font-size: .58rem; padding-top: 3px; }
 .project-row h3 { margin-bottom: 4px; }
 .project-row p { max-width: 680px; }
 .arrow { color: var(--dim); font-size: .9rem; }
@@ -123,7 +136,6 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
 .project-footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 30px; margin-top: 14px; border-top: 1px solid var(--line); }
 .back-next { font-size: .58rem; }
 .back-next:hover { color: var(--accent); }
-.project-index { color: var(--dim); font-size: .58rem; }
 
 @media (max-width: 700px) {
   .topbar { padding: 9px 15px; align-items: center; }
@@ -178,7 +190,10 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
 .skills-list span { display:block; font-size:.72rem; letter-spacing:.12em; opacity:.65; }
 .skills-list p { margin:4px 0 0; }
 @media (max-width:700px) {
-  .section { margin-top:58px; margin-bottom:58px; }
+  .section { margin-top:58px; margin-bottom:58px; 
+  .experience-row { grid-template-columns: 1fr; }
+  .experience-row .arrow { display: none; }
+}
   .education-header, .experience-header, .experience-meta { flex-direction:column; align-items:flex-start; gap:5px; }
   .course-list { grid-template-columns:1fr; }
 }
