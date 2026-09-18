@@ -12,16 +12,27 @@ Personal GitHub Pages portfolio for Michael Yan.
 
 About Me → Experience → Projects → Skills → Education → Contact
 
-The left sidebar tracks the current section while scrolling and links directly to each section.
+The main portfolio uses a single left-side contents rail that follows the current section while scrolling. Project cards open dedicated project detail pages.
 
-## Project pages
+## GitHub Pages
 
-Each project card is clickable and opens a dedicated detail page. Replace or expand the project-page content as needed.
+Set GitHub Pages to deploy from the `main` branch / root of the repository.
+# Michael Yan — Engineering Portfolio
 
-## Before publishing
+Personal GitHub Pages portfolio for Michael Yan.
 
-Replace:
-- `YOUR_EMAIL@example.com`
-- the LinkedIn `#` placeholder
+## Structure
 
-Upload the complete folder structure to the root of the GitHub Pages repository.
+- `index.html` — main portfolio
+- `style.css` — site styling and animated background
+- `projects/` — individual project detail pages
+
+## Sections
+
+About Me → Experience → Projects → Skills → Education → Contact
+
+The main portfolio uses a single left-side contents rail that follows the current section while scrolling. Project cards open dedicated project detail pages.
+
+## GitHub Pages
+
+Set GitHub Pages to deploy from the `main` branch / root of the repository.

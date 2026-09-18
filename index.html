@@ -25,15 +25,6 @@
     </div>
   </header>
 
-  <nav class="toc" aria-label="Table of contents">
-    <a href="#about" class="active"><span class="toc-dot"></span><span>ABOUT ME</span></a>
-    <a href="#experience"><span class="toc-dot"></span><span>EXPERIENCE</span></a>
-    <a href="#projects"><span class="toc-dot"></span><span>PROJECTS</span></a>
-    <a href="#skills"><span class="toc-dot"></span><span>SKILLS</span></a>
-    <a href="#education"><span class="toc-dot"></span><span>EDUCATION</span></a>
-    <a href="#contact"><span class="toc-dot"></span><span>CONTACT</span></a>
-  </nav>
-
 
   <aside class="side-toc" aria-label="Section navigation">
     <div class="toc-line"></div>
@@ -198,19 +189,6 @@
   <footer>
     MICHAEL YAN // PORTFOLIO
   </footer>
-  <script>
-    const sections = document.querySelectorAll('main section[id]');
-    const tocLinks = document.querySelectorAll('.toc a');
-    const setActive = (id) => {
-      tocLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
-    };
-    const observer = new IntersectionObserver((entries) => {
-      const visible = [...entries].filter(entry => entry.isIntersecting);
-      if (visible.length) setActive(visible.sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0].target.id);
-    }, { threshold: [0.2, 0.45, 0.7], rootMargin: '-15% 0px -35% 0px' });
-    sections.forEach(section => observer.observe(section));
-  </script>
-
   <script>
     const sections = document.querySelectorAll('main > section[id]');
     const tocItems = document.querySelectorAll('.toc-item');
