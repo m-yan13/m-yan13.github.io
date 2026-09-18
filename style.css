@@ -590,3 +590,174 @@ footer {
   html { scroll-behavior: auto; }
   .toc a, .skills-grid div, .menu-item { transition: none; }
 }
+
+
+/* SECTION SIDEBAR */
+.side-toc {
+  position: fixed;
+  z-index: 14;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 168px;
+  padding: 10px 0 10px 17px;
+}
+.side-toc .toc-line {
+  position: absolute;
+  left: 0;
+  top: 24px;
+  bottom: 24px;
+  width: 1px;
+  background: var(--line);
+}
+.toc-label {
+  margin-bottom: 16px;
+  color: var(--dim);
+  font-size: .48rem;
+  letter-spacing: .18em;
+}
+.toc-item {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 31px;
+  color: var(--dim);
+  font-size: .5rem;
+  letter-spacing: .06em;
+  transition: color .2s ease, transform .2s ease;
+}
+.toc-item::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--dim);
+  background: var(--black);
+  transform: rotate(45deg);
+  transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.toc-item span {
+  width: 20px;
+  color: var(--dim);
+}
+.toc-item b { font-weight: 500; }
+.toc-item:hover,
+.toc-item.active {
+  color: var(--ink);
+  transform: translateX(3px);
+}
+.toc-item.active::before {
+  border-color: var(--red-light);
+  background: var(--red);
+  box-shadow: 0 0 9px rgba(207,74,61,.28);
+}
+.toc-item.active span { color: var(--red-light); }
+
+/* ABOUT MARKER: replaces the old UBC stamp */
+.about-marker {
+  width: 190px;
+  height: 190px;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8,9,8,.34);
+}
+.about-marker span {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 3.2rem;
+  line-height: .9;
+}
+.about-marker small {
+  margin-top: 12px;
+  color: var(--muted);
+  text-align: center;
+  font-size: .47rem;
+  letter-spacing: .13em;
+  line-height: 1.6;
+}
+
+/* EXPERIENCE */
+.experience-screen {
+  border-top: 1px solid var(--line-soft);
+}
+.experience-card {
+  width: min(var(--max), calc(100% - 48px));
+  margin: 0 auto;
+  padding: 35px;
+  background: rgba(8,9,8,.58);
+  border: 1px solid var(--line-soft);
+}
+.experience-row {
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  gap: 8px;
+}
+.experience-number {
+  color: var(--red-light);
+  font-size: .66rem;
+}
+.experience-row h3 {
+  margin: 8px 0 14px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.experience-row p {
+  max-width: 800px;
+  color: #aaa798;
+  font-size: .71rem;
+}
+
+/* PROJECT CARDS ARE FULL CLICK TARGETS */
+.project-link {
+  display: block;
+  color: inherit;
+  cursor: pointer;
+}
+.project-link:hover {
+  background: rgba(17,19,16,.86);
+}
+.project-link:hover h3 {
+  color: var(--ink);
+}
+.project-link .open-file {
+  margin-top: 21px;
+}
+
+/* SKILLS */
+.skills-screen {
+  border-top: 1px solid var(--line-soft);
+}
+.skills-grid {
+  width: min(var(--max), calc(100% - 48px));
+  margin: 0 auto;
+  max-width: var(--max);
+}
+
+/* CLEANER EDUCATION */
+.record-card { min-height: 190px; }
+
+/* MOBILE */
+@media (max-width: 1050px) {
+  .side-toc { left: 15px; width: 145px; }
+  .screen-header, .files, .dossier, .record-card, .experience-card, .skills-grid {
+    width: min(var(--max), calc(100% - 210px));
+    margin-left: 190px;
+    margin-right: 20px;
+  }
+}
+@media (max-width: 760px) {
+  .side-toc { display: none; }
+  .screen-header, .files, .dossier, .record-card, .experience-card, .skills-grid {
+    width: min(var(--max), calc(100% - 30px));
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-marker { width: 150px; height: 150px; }
+  .experience-card { padding: 26px 20px; }
+}

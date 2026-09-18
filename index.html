@@ -34,191 +34,166 @@
     <a href="#contact"><span class="toc-dot"></span><span>CONTACT</span></a>
   </nav>
 
+
+  <aside class="side-toc" aria-label="Section navigation">
+    <div class="toc-line"></div>
+    <div class="toc-label">CONTENTS</div>
+    <nav>
+      <a class="toc-item active" href="#about" data-section="about"><span>01</span><b>ABOUT ME</b></a>
+      <a class="toc-item" href="#experience" data-section="experience"><span>02</span><b>EXPERIENCE</b></a>
+      <a class="toc-item" href="#projects" data-section="projects"><span>03</span><b>PROJECTS</b></a>
+      <a class="toc-item" href="#skills" data-section="skills"><span>04</span><b>SKILLS</b></a>
+      <a class="toc-item" href="#education" data-section="education"><span>05</span><b>EDUCATION</b></a>
+      <a class="toc-item" href="#contact" data-section="contact"><span>06</span><b>CONTACT</b></a>
+    </nav>
+  </aside>
   <main>
-    <section class="screen hero-screen" id="home">
-      <div class="title-block">
-        <div class="title-kicker">ELECTRICAL ENGINEERING</div>
-        <h1>MICHAEL YAN</h1>
-        <div class="subtitle">HARDWARE · EMBEDDED SYSTEMS · CONTROLS</div>
+  <section class="screen dossier-screen" id="about">
+    <div class="screen-header">
+      <div>
+        <div class="tiny-label">01</div>
+        <h2>ABOUT ME</h2>
+      </div>
+    </div>
+
+    <div class="dossier">
+      <div class="about-marker">
+        <span>MY</span>
+        <small>ELECTRICAL<br>ENGINEERING</small>
       </div>
 
-      <nav class="game-menu" aria-label="Main navigation">
-        <a class="menu-item" href="#about"><span class="menu-number">01</span><span class="arrow">▶</span><span>ABOUT ME</span></a>
-        <a class="menu-item" href="#experience"><span class="menu-number">02</span><span class="arrow">▶</span><span>EXPERIENCE</span></a>
-        <a class="menu-item" href="#projects"><span class="menu-number">03</span><span class="arrow">▶</span><span>PROJECTS</span></a>
-        <a class="menu-item" href="#skills"><span class="menu-number">04</span><span class="arrow">▶</span><span>SKILLS</span></a>
-        <a class="menu-item" href="#education"><span class="menu-number">05</span><span class="arrow">▶</span><span>EDUCATION</span></a>
-        <a class="menu-item" href="#contact"><span class="menu-number">06</span><span class="arrow">▶</span><span>CONTACT</span></a>
-      </nav>
-
-      <div class="bottom-prompt">
-        <span>↓</span> SCROLL TO EXPLORE
+      <div class="dossier-text">
+        <p>I enjoy engineering problems where the answer is not immediately obvious. I break systems down into physical and technical questions, test assumptions, and use measurements and analysis to understand what is actually happening.</p>
+        <p>My project experience spans electronic hardware, PCB design, embedded systems, robotics, controls, and system testing. I am particularly interested in practical engineering work where I can build, troubleshoot, and improve real systems.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="screen file-screen" id="projects">
-      <div class="screen-header">
+  <section class="screen experience-screen" id="experience">
+    <div class="screen-header">
+      <div>
+        <div class="tiny-label">02</div>
+        <h2>EXPERIENCE</h2>
+      </div>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-row">
+        <div class="experience-number">01</div>
         <div>
-          <div class="tiny-label">03 / 06</div>
-          <h2>PROJECTS</h2>
+          <div class="case-type">ENGINEERING / METROLOGY</div>
+          <h3>CMM MEASUREMENT &amp; TESTING</h3>
+          <p>Performed dimensional accuracy measurements using coordinate measuring machines, configured measurement setups and probes, and analyzed recorded results to identify errors and discrepancies.</p>
         </div>
-        <div class="file-count">03 / 06</div>
       </div>
+    </div>
+  </section>
 
-      <div class="files">
-        <article class="case-file featured">
-          <div class="case-number">01</div>
-          <div class="case-content">
-            <div class="case-type">HARDWARE DEVELOPMENT / EMBEDDED SYSTEMS</div>
-            <h3>iHEAR2++</h3>
-            <p>Low-cost portable acoustic measurement system using a five-microphone array and an STM32-based control PCB for synchronized multi-channel data acquisition.</p>
-            <div class="metrics">
-              <div><strong>3.85×</strong><span>noise reduction through averaging</span></div>
-              <div><strong>~80%</strong><span>data-clock crosstalk reduction</span></div>
-            </div>
-            <div class="chips"><span>STM32</span><span>PCB DESIGN</span><span>PDM</span><span>TESTING</span></div>
-            <a class="open-file" href="#" aria-label="Add your iHEAR2++ project page">OPEN FILE <span>→</span></a>
+  <section class="screen file-screen" id="projects">
+    <div class="screen-header">
+      <div>
+        <div class="tiny-label">03</div>
+        <h2>PROJECTS</h2>
+      </div>
+      <div class="file-count">04 PROJECTS</div>
+    </div>
+
+    <div class="files">
+      <a class="case-file featured project-link" href="projects/ihear2.html">
+        <div class="case-number">01</div>
+        <div class="case-content">
+          <div class="case-type">HARDWARE / EMBEDDED SYSTEMS</div>
+          <h3>iHEAR2++</h3>
+          <p>Low-cost portable acoustic measurement system using a five-microphone array and an STM32-based control PCB for synchronized multi-channel data acquisition.</p>
+          <div class="metrics">
+            <div><strong>3.85×</strong><span>noise reduction through averaging</span></div>
+            <div><strong>~80%</strong><span>data-clock crosstalk reduction</span></div>
           </div>
-        </article>
-
-        <article class="case-file">
-          <div class="case-number">02</div>
-          <div class="case-content">
-            <div class="case-type">ROBOTICS / CONTROL SYSTEMS</div>
-            <h3>DUAL FRANKA ROBOT CONTROL</h3>
-            <p>Coordinated robot control and collision-free trajectories in ROS 2, including kinematics, null-space control, simulation, and physical gripper integration.</p>
-            <div class="chips"><span>ROS 2</span><span>MOVEIT 2</span><span>KDL</span><span>GAZEBO</span></div>
-            <a class="open-file" href="#" aria-label="Add your robotics project page">OPEN FILE <span>→</span></a>
-          </div>
-        </article>
-
-        <article class="case-file">
-          <div class="case-number">03</div>
-          <div class="case-content">
-            <div class="case-type">PCB DESIGN</div>
-            <h3>CUSTOM KEYBOARD PCB</h3>
-            <p>Custom keyboard PCB designed in KiCad, including schematic capture and PCB layout with a focus on board organization and manufacturability.</p>
-            <div class="chips"><span>KICAD</span><span>SCHEMATIC</span><span>PCB LAYOUT</span></div>
-            <a class="open-file" href="https://github.com/m-yan13/Keyboard-PCB" target="_blank" rel="noopener">OPEN GITHUB FILE <span>→</span></a>
-          </div>
-        </article>
-
-        <article class="case-file">
-          <div class="case-number">04</div>
-          <div class="case-content">
-            <div class="case-type">INDUSTRIAL CONTROL / AUTOMATION</div>
-            <h3>PLC PUMP CONTROL</h3>
-            <p>PLC learning project covering pump start/stop logic, automatic operation, and low-level operating conditions using a PLC IDE simulator.</p>
-            <div class="chips"><span>PLC</span><span>LADDER LOGIC</span><span>AUTOMATION</span></div>
-            <a class="open-file" href="#" aria-label="Add your PLC project page">OPEN FILE <span>→</span></a>
-          </div>
-        </article>
-      </div>
-
-      <div class="bottom-prompt"><span>ESC</span> RETURN TO MAIN MENU</div>
-    </section>
-
-    <section class="screen dossier-screen" id="about">
-      <div class="screen-header">
-        <div>
-          <div class="tiny-label">01 / 06</div>
-          <h2>ABOUT ME</h2>
+          <div class="chips"><span>STM32</span><span>PCB DESIGN</span><span>PDM</span><span>TESTING</span></div>
+          <span class="open-file">VIEW PROJECT <span>→</span></span>
         </div>
-        <div class="file-count">01 / 06</div>
-      </div>
+      </a>
 
-      <div class="dossier">
-        <div class="stamp">
-          <span>UBC</span>
-          <small>ELECTRICAL</small>
-          <strong>ENGINEERING</strong>
+      <a class="case-file project-link" href="projects/franka.html">
+        <div class="case-number">02</div>
+        <div class="case-content">
+          <div class="case-type">ROBOTICS / CONTROL SYSTEMS</div>
+          <h3>DUAL FRANKA ROBOT CONTROL</h3>
+          <p>Coordinated robot control and collision-free trajectories in ROS 2, including kinematics, null-space control, simulation, and physical gripper integration.</p>
+          <div class="chips"><span>ROS 2</span><span>MOVEIT 2</span><span>KDL</span><span>GAZEBO</span></div>
+          <span class="open-file">VIEW PROJECT <span>→</span></span>
         </div>
+      </a>
 
-        <div class="dossier-text">
-          <p>I enjoy engineering problems where the answer is not immediately obvious. I break systems down into physical and technical questions, test assumptions, and use measurements and analysis to understand what is actually happening.</p>
-          <p>My project experience spans electronic hardware, PCB design, embedded systems, robotics, controls, and system testing. I am particularly interested in practical engineering work where I can build, troubleshoot, and improve real systems.</p>
-
-          <div class="inventory">
-            <div>HARDWARE DESIGN</div><div>PCB DESIGN</div><div>STM32</div><div>EMBEDDED C</div>
-            <div>TESTING</div><div>TROUBLESHOOTING</div><div>CONTROLS</div><div>ROS 2</div>
-            <div>KICAD</div><div>AUTOCAD</div><div>PLC</div>
-          </div>
+      <a class="case-file project-link" href="projects/keyboard.html">
+        <div class="case-number">03</div>
+        <div class="case-content">
+          <div class="case-type">PCB DESIGN</div>
+          <h3>CUSTOM KEYBOARD PCB</h3>
+          <p>Custom keyboard PCB designed in KiCad, including schematic capture and PCB layout with a focus on board organization and manufacturability.</p>
+          <div class="chips"><span>KICAD</span><span>SCHEMATIC</span><span>PCB LAYOUT</span></div>
+          <span class="open-file">VIEW PROJECT <span>→</span></span>
         </div>
-      </div>
+      </a>
 
-      <div class="bottom-prompt"><span>ESC</span> RETURN TO MAIN MENU</div>
-    </section>
-
-    <section class="screen experience-screen" id="experience">
-      <div class="screen-header">
-        <div>
-          <div class="tiny-label">02 / 06</div>
-          <h2>EXPERIENCE</h2>
+      <a class="case-file project-link" href="projects/plc.html">
+        <div class="case-number">04</div>
+        <div class="case-content">
+          <div class="case-type">INDUSTRIAL CONTROL / AUTOMATION</div>
+          <h3>PLC PUMP CONTROL</h3>
+          <p>PLC learning project covering pump start/stop logic, automatic operation, and low-level operating conditions using a PLC IDE simulator.</p>
+          <div class="chips"><span>PLC</span><span>LADDER LOGIC</span><span>AUTOMATION</span></div>
+          <span class="open-file">VIEW PROJECT <span>→</span></span>
         </div>
-        <div class="file-count">02 / 06</div>
-      </div>
-      <div class="experience-card">
-        <div class="experience-mark">EE</div>
-        <div>
-          <div class="case-type">PROJECT-BASED ENGINEERING EXPERIENCE</div>
-          <h3>HARDWARE · EMBEDDED · CONTROLS</h3>
-          <p>Hands-on engineering experience across electronic hardware, PCB design, embedded systems, robotics, controls, and system testing through university and personal projects.</p>
-          <p>I enjoy breaking ambiguous problems into smaller technical questions, testing assumptions, and using measurements and analysis to understand and improve system behaviour.</p>
-        </div>
-      </div>
-    </section>
+      </a>
+    </div>
+  </section>
 
-    <section class="screen record-screen" id="education">
-      <div class="screen-header">
-        <div>
-          <div class="tiny-label">05 / 06</div>
-          <h2>EDUCATION</h2>
-        </div>
-        <div class="file-count">05 / 06</div>
+  <section class="screen skills-screen" id="skills">
+    <div class="screen-header">
+      <div>
+        <div class="tiny-label">04</div>
+        <h2>SKILLS</h2>
       </div>
+    </div>
 
-      <div class="record-card">
-        <div class="record-left">
-          <div class="record-code">UBC / BASc / EE</div>
-          <h3>UNIVERSITY OF BRITISH COLUMBIA</h3>
-          <p>Bachelor of Applied Science — Electrical Engineering</p>
-        </div>
-        <div class="record-seal">GRADUATED<br>WITH<br>DISTINCTION</div>
-      </div>
+    <div class="inventory skills-grid">
+      <div>HARDWARE DESIGN</div><div>PCB DESIGN</div><div>STM32</div><div>EMBEDDED C</div>
+      <div>TESTING</div><div>TROUBLESHOOTING</div><div>CONTROLS</div><div>ROS 2</div>
+      <div>KICAD</div><div>AUTOCAD</div><div>PLC</div>
+    </div>
+  </section>
 
-      <div class="bottom-prompt"><span>ESC</span> RETURN TO MAIN MENU</div>
-    </section>
+  <section class="screen record-screen" id="education">
+    <div class="screen-header">
+      <div>
+        <div class="tiny-label">05</div>
+        <h2>EDUCATION</h2>
+      </div>
+    </div>
 
-    <section class="screen skills-screen" id="skills">
-      <div class="screen-header">
-        <div>
-          <div class="tiny-label">04 / 06</div>
-          <h2>SKILLS</h2>
-        </div>
-        <div class="file-count">04 / 06</div>
+    <div class="record-card">
+      <div class="record-left">
+        <div class="record-code">UBC / BASc / EE</div>
+        <h3>UNIVERSITY OF BRITISH COLUMBIA</h3>
+        <p>Bachelor of Applied Science — Electrical Engineering</p>
       </div>
-      <div class="skills-grid">
-        <div><span>01</span>HARDWARE DESIGN</div><div><span>02</span>PCB DESIGN</div><div><span>03</span>STM32</div>
-        <div><span>04</span>EMBEDDED C</div><div><span>05</span>TESTING</div><div><span>06</span>TROUBLESHOOTING</div>
-        <div><span>07</span>CONTROLS</div><div><span>08</span>ROS 2</div><div><span>09</span>KICAD</div>
-        <div><span>10</span>AUTOCAD</div><div><span>11</span>PLC</div>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="screen contact-screen" id="contact">
-      <div class="contact-inner">
-        <div class="tiny-label">06 / 06</div>
-        <h2>CONTACT</h2>
-        <p>Currently exploring opportunities in electrical engineering, hardware, embedded systems, controls, and related technical roles.</p>
-        <div class="contact-menu">
-          <a class="menu-item selected" href="mailto:YOUR_EMAIL@example.com"><span class="arrow">▶</span><span>SEND MESSAGE</span></a>
-          <a class="menu-item" href="https://github.com/m-yan13" target="_blank" rel="noopener"><span class="arrow">▶</span><span>GITHUB</span></a>
-          <a class="menu-item" href="#" aria-label="Add your LinkedIn profile link"><span class="arrow">▶</span><span>LINKEDIN</span></a>
-        </div>
+  <section class="screen contact-screen" id="contact">
+    <div class="contact-inner">
+      <div class="tiny-label">06</div>
+      <h2>CONTACT</h2>
+      <p>Interested in electrical engineering, hardware, embedded systems, controls, and related technical opportunities.</p>
+      <div class="contact-menu">
+        <a class="menu-item selected" href="mailto:YOUR_EMAIL@example.com"><span class="arrow">▶</span><span>EMAIL</span></a>
+        <a class="menu-item" href="https://github.com/m-yan13" target="_blank" rel="noopener"><span class="arrow">▶</span><span>GITHUB</span></a>
+        <a class="menu-item" href="#" aria-label="Add your LinkedIn profile link"><span class="arrow">▶</span><span>LINKEDIN</span></a>
       </div>
-      <div class="bottom-prompt"><span>ESC</span> RETURN TO MAIN MENU</div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
   <footer>
     MICHAEL YAN // PORTFOLIO
@@ -235,5 +210,28 @@
     }, { threshold: [0.2, 0.45, 0.7], rootMargin: '-15% 0px -35% 0px' });
     sections.forEach(section => observer.observe(section));
   </script>
+
+  <script>
+    const sections = document.querySelectorAll('main > section[id]');
+    const tocItems = document.querySelectorAll('.toc-item');
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visible) {
+        tocItems.forEach(item => {
+          item.classList.toggle('active', item.dataset.section === visible.target.id);
+        });
+      }
+    }, {
+      rootMargin: '-35% 0px -55% 0px',
+      threshold: [0, 0.15, 0.4, 0.7]
+    });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+
 </body>
 </html>
