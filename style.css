@@ -484,3 +484,119 @@ footer {
   .metrics { gap: 28px; }
   .contact-inner { padding: 35px 22px; }
 }
+
+/* --- ATMOSPHERIC GAME-MENU BACKGROUND V2 ---
+   Built entirely in CSS: subdued village, mountains, road, fog and rain.
+   Multiple layers move at different speeds so the background has visible
+   motion without competing with the portfolio content. */
+.background {
+  background:
+    radial-gradient(ellipse at 53% 27%, rgba(148, 154, 145, .12), transparent 24%),
+    radial-gradient(ellipse at 78% 48%, rgba(116, 125, 106, .08), transparent 25%),
+    linear-gradient(to bottom, #0a0e10 0%, #182027 43%, #111510 73%, #070806 100%);
+}
+
+.bg-image {
+  inset: -10%;
+  transform: scale(1.06);
+  opacity: .92;
+  animation: cinematicDrift 38s ease-in-out infinite alternate;
+  background:
+    /* moon glow */
+    radial-gradient(circle at 68% 21%, rgba(198, 205, 194, .15) 0 2%, transparent 13%),
+    /* distant mountain range */
+    polygon(0 62%, 9% 52%, 17% 59%, 27% 45%, 37% 58%, 48% 40%, 58% 55%, 70% 43%, 80% 57%, 90% 45%, 100% 55%, 100% 100%, 0 100%),
+    linear-gradient(to bottom, transparent 0 47%, rgba(12, 16, 16, .75) 47.5% 62%, transparent 62.5%),
+    /* road */
+    linear-gradient(166deg, transparent 0 66%, rgba(4,5,4,.92) 66.5% 100%),
+    /* ground */
+    linear-gradient(to bottom, transparent 0 57%, #111510 58% 100%);
+}
+
+/* A stronger multi-layer silhouette gives the scene the composition of a game menu. */
+.bg-image::before {
+  background:
+    /* village roofs */
+    linear-gradient(145deg, transparent 0 60%, rgba(7,9,8,.94) 60.2% 62%, transparent 62.2%),
+    linear-gradient(32deg, transparent 0 65%, rgba(7,9,8,.92) 65.2% 67%, transparent 67.2%),
+    linear-gradient(148deg, transparent 0 71%, rgba(8,10,8,.96) 71.2% 74%, transparent 74.2%),
+    /* tree branches */
+    repeating-linear-gradient(112deg, transparent 0 85px, rgba(5,7,6,.76) 86px 90px, transparent 91px 150px),
+    repeating-linear-gradient(74deg, transparent 0 130px, rgba(5,7,6,.6) 131px 135px, transparent 136px 220px);
+  opacity: .78;
+  transform: translate3d(0,0,0) scale(1.04);
+  animation: foregroundDrift 25s ease-in-out infinite alternate-reverse;
+}
+
+.bg-image::after {
+  background:
+    /* distant house lights */
+    radial-gradient(circle at 70% 64%, rgba(215, 177, 108, .35) 0 2px, transparent 4px),
+    radial-gradient(circle at 74% 61%, rgba(215, 177, 108, .28) 0 2px, transparent 4px),
+    radial-gradient(circle at 79% 66%, rgba(215, 177, 108, .30) 0 2px, transparent 4px),
+    radial-gradient(circle at 65% 67%, rgba(215, 177, 108, .20) 0 2px, transparent 4px),
+    /* road reflection */
+    linear-gradient(165deg, transparent 0 78%, rgba(160, 144, 112, .10) 78.2% 79%, transparent 79.4%),
+    linear-gradient(165deg, transparent 0 85%, rgba(160, 144, 112, .07) 85.2% 86%, transparent 86.4%);
+  opacity: .75;
+  animation: lightsDrift 16s ease-in-out infinite alternate;
+}
+
+@keyframes cinematicDrift {
+  0% { transform: scale(1.055) translate3d(-.8%, -.35%, 0); }
+  50% { transform: scale(1.075) translate3d(.25%, .1%, 0); }
+  100% { transform: scale(1.10) translate3d(.9%, .45%, 0); }
+}
+
+@keyframes foregroundDrift {
+  0% { transform: translate3d(-.8%, .2%, 0) scale(1.035); }
+  100% { transform: translate3d(1%, -.35%, 0) scale(1.075); }
+}
+
+@keyframes lightsDrift {
+  0% { transform: translate3d(-.3%, 0, 0); opacity: .58; }
+  100% { transform: translate3d(.8%, .2%, 0); opacity: .82; }
+}
+
+/* Make the motion readable rather than barely perceptible. */
+.fog-a {
+  top: 38%;
+  height: 30%;
+  opacity: .18;
+  animation: fogDrift 17s ease-in-out infinite alternate;
+}
+.fog-b {
+  top: 58%;
+  height: 35%;
+  opacity: .13;
+  animation: fogDriftB 23s ease-in-out infinite alternate-reverse;
+}
+@keyframes fogDriftB {
+  from { transform: translate3d(8%, 2%, 0) scale(1.05); }
+  to { transform: translate3d(-10%, -3%, 0) scale(1.18); }
+}
+
+.rain {
+  inset: -45%;
+  opacity: .13;
+  background-size: 85px 85px;
+  animation: rainMove 1.05s linear infinite;
+}
+
+/* Keep the visual focal point behind the menu quiet. */
+.hero-screen::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  width: min(760px, 82vw);
+  height: 58%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(4,5,4,.12), rgba(4,5,4,.48) 68%, transparent 76%);
+  pointer-events: none;
+}
+
+.hero-screen > * {
+  position: relative;
+  z-index: 2;
+}
