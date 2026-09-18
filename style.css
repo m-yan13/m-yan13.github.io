@@ -237,3 +237,13 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
     gap: 4px;
   }
 }
+
+/* v12 contact header refinement */
+.contact-intro {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.contact-intro p {
+  margin: 0;
+}
