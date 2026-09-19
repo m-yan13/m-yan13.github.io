@@ -278,3 +278,147 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
 @media (max-width: 700px) {
   .article-figure.figure-pair { grid-template-columns: 1fr; }
 }
+
+
+/* Qingdao experience page */
+.experience-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 22px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.experience-meta-item {
+  background: var(--panel);
+  padding: 12px 13px;
+}
+.experience-meta-item span {
+  display: block;
+  color: var(--dim);
+  font-size: .54rem;
+  letter-spacing: .11em;
+  margin-bottom: 5px;
+}
+.experience-meta-item strong {
+  display: block;
+  color: var(--text);
+  font-size: .67rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.experience-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.experience-skill {
+  border: 1px solid var(--line);
+  padding: 6px 9px;
+  color: var(--muted);
+  font-size: .6rem;
+  letter-spacing: .04em;
+}
+.experience-content {
+  margin-top: 8px;
+}
+.experience-section {
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+}
+.experience-section:first-child {
+  border-top: 0;
+}
+.experience-kicker {
+  color: var(--dim);
+  font-size: .56rem;
+  letter-spacing: .12em;
+  margin-bottom: 7px;
+}
+.experience-section h2 {
+  color: var(--accent);
+  font-size: .84rem;
+  font-weight: 500;
+  letter-spacing: .03em;
+  margin-bottom: 14px;
+}
+.experience-section h3 {
+  color: var(--text);
+  font-size: .73rem;
+  font-weight: 500;
+  margin: 22px 0 8px;
+}
+.experience-section p {
+  max-width: 700px;
+  color: var(--muted);
+  font-size: .77rem;
+  line-height: 1.75;
+  margin: 0 0 13px;
+}
+.experience-stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin: 18px 0 22px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  max-width: 700px;
+}
+.experience-stat {
+  min-width: 105px;
+}
+.experience-stat strong {
+  display: block;
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.experience-stat span {
+  display: block;
+  color: var(--dim);
+  font-size: .58rem;
+  line-height: 1.4;
+  margin-top: 2px;
+}
+.experience-figure {
+  margin: 22px 0 25px;
+  max-width: 700px;
+}
+.experience-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+}
+.experience-figure figcaption {
+  color: var(--dim);
+  font-size: .6rem;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+.experience-list {
+  max-width: 700px;
+  margin: 0 0 14px;
+  padding-left: 18px;
+}
+.experience-list li {
+  color: var(--muted);
+  font-size: .77rem;
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+@media (max-width: 700px) {
+  .experience-meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .experience-stat-row {
+    gap: 18px;
+  }
+}
+@media (max-width: 430px) {
+  .experience-meta-grid {
+    grid-template-columns: 1fr;
+  }
+}
