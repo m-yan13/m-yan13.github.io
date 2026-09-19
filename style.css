@@ -121,7 +121,7 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
 .project-header { padding: 26px 0 20px; border-bottom: 1px solid var(--line); }
 .project-header h1 { font-size: clamp(1.8rem, 5vw, 3.1rem); margin: 0 0 8px; }
 .project-intro { max-width: 650px; font-size: .82rem; color: var(--muted); }
-.project-section-title { margin: 20px 0 8px; color: var(--dim); font-size: .58rem; letter-spacing: .1em; }
+.project-section-title { margin: 20px 0 8px; color: var(--dim); font-size: 1.25rem; letter-spacing: .1em; }
 .detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .detail-box { padding: 13px; background: var(--panel); }
 .detail-box h2 { font-size: .7rem; color: var(--text); margin-bottom: 10px; letter-spacing: .06em; }
