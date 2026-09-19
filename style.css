@@ -422,3 +422,27 @@ footer { padding: 16px; border-top: 1px solid var(--line); color: var(--dim); te
     grid-template-columns: 1fr;
   }
 }
+
+/* Unified header and title color */
+h1,
+h2,
+h3,
+h4,
+.section-head span,
+.section-heading h2,
+.project-header h1,
+.project-section-title,
+.detail-box h2,
+.article-kicker,
+.article-section h2,
+.article-section h3,
+.experience-main-heading,
+.experience-kicker,
+.experience-section h2,
+.experience-section h3,
+.experience-meta-item span,
+.experience-meta-item strong,
+.project-crumb {
+  color: #d9dee5;
+}
+
