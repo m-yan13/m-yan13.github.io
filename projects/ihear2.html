@@ -1,109 +1,521 @@
 <!DOCTYPE html>
-<html lang="en"><head><link rel="icon" type="image/png" href="../favicon.png"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="iHEAR2++ — Michael Yan engineering portfolio."><title>iHEAR2++ | Michael Yan</title><link rel="stylesheet" href="../style.css"></head>
-<body><div class="background" aria-hidden="true"></div>
-<header class="topbar"><a href="../index.html#about" class="wordmark">MICHAEL YAN</a><nav class="topnav"><a href="../index.html#about">ABOUT</a><a href="../index.html#experience">EXPERIENCE</a><a href="../index.html#education">EDUCATION</a><a href="../index.html#projects">PROJECTS</a><a href="../index.html#skills">SKILLS</a><a href="../index.html#contact">CONTACT</a></nav></header>
-<main class="project-page"><div class="project-wrap"><a class="project-crumb" href="../index.html#projects">← BACK TO PROJECTS</a>
-<header class="project-header"><h1>iHEAR2++</h1><p class="project-intro">Hardware / Embedded Systems · A low-cost portable acoustic measurement system built around synchronized multi-channel acquisition.</p></header>
-<div class="project-section-title">PROJECT NOTES</div><section class="detail-grid"><article class="detail-box"><h2>Overview</h2><p>Designed a portable acoustic measurement system using a five-microphone array and an STM32H723VGT6 control PCB. The system synchronously acquires and transfers five channels of PDM microphone data to a PC.</p></article><article class="detail-box"><h2>Testing</h2><p>Across three recordings, multi-acquisition averaging produced 3.85× noise reduction, corresponding to 11.71 dB.</p></article><article class="detail-box"><h2>Signal integrity</h2><p>Shielded cabling and source-series termination reduced data-clock crosstalk by approximately 80%, bringing interference below the target threshold.</p></article><article class="detail-box"><h2>Tools</h2><p>STM32 · KiCad · PDM · PCB design · Embedded C · Testing</p></article></section>
-<div class="project-section-title">PROJECT WRITE-UP</div>
-<article class="write-up">
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="iHEAR2++ | Michael Yan engineering portfolio.">
+  <title>iHEAR2++ | Michael Yan</title>
+  <link rel="stylesheet" href="../style.css">
 
-<section class="article-section" id="scope">
-  <div class="article-kicker">01</div>
-  <h2>Scope &amp; the Problem</h2>
+  <style>
+    .experience-main-heading {
+      font-size: clamp(1.25rem, 2.2vw, 1.25rem);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      color: #d9dee5;
+    }
+    .figure-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      max-width: 700px;
+      margin: 22px 0 25px;
+    }
+    .figure-grid .experience-figure {
+      margin: 0;
+      max-width: none;
+    }
+    .figure-note {
+      max-width: 700px;
+      margin: -14px 0 25px;
+      color: var(--dim);
+      font-size: .6rem;
+      line-height: 1.5;
+    }
+    .figure-grid.narrow {
+      max-width: 460px;
+    }
+    @media (max-width: 560px) {
+      .figure-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background" aria-hidden="true"></div>
 
-  <p>iHear2++ was a two-semester capstone project built for Deng Audio Research, a client developing tools to screen hearing health outside of a clinical audiology setup. Our five-person team (project AI-082) was tasked with building a low-cost, portable device that could measure how sound reflects inside the ear canal — a signal that can be used to flag hearing issues without a full clinical exam.</p>
+  <header class="topbar">
+    <a href="../index.html#about" class="wordmark">MICHAEL YAN</a>
+    <nav class="topnav" aria-label="Main navigation">
+      <a href="../index.html#about">ABOUT</a>
+      <a href="../index.html#experience">EXPERIENCE</a>
+      <a href="../index.html#education">EDUCATION</a>
+      <a href="../index.html#projects">PROJECTS</a>
+      <a href="../index.html#skills">SKILLS</a>
+      <a href="../index.html#contact">CONTACT</a>
+    </nav>
+  </header>
 
-  <figure class="article-figure">
-    <div class="image-placeholder">Insert image here — <b>Design Document, Figure 1: "iHear2++ System Diagram"</b>. High-level block diagram showing the five PDM microphones, control PCB, and PC software.</div>
-    <figcaption>Figure: system-level block diagram of the full signal path, from microphone array to PC.</figcaption>
-  </figure>
+  <main class="project-page">
+    <div class="project-wrap">
+      <a class="project-crumb" href="../index.html#projects">← BACK TO PROJECTS</a>
 
-  <p>At a system level, the device works like this: a small audio driver plays a calibrated 20 Hz–20 kHz sweep down an acoustic tube pressed into the ear. Five PDM MEMS microphones, spaced along the inside of that tube at fixed positions, each pick up the reflected sweep at a slightly different point. A control PCB built around an STM32H723VGT6 microcontroller reads all five microphone channels in parallel, packages the data, and streams it over USB to a PC, where our software reconstructs an ear-canal reflectance plot from the five recordings.</p>
+      <header class="project-header">
+        <h1>iHEAR2++</h1>
 
-  <p>The hard part of this project was never any single piece of it — it was that everything had to work together at once. Five synchronized, high-bit-rate digital microphone streams needed to leave the device without dropping a sample. The microphones had to sit at exact positions defined by the client's acoustic model, which meant tight mechanical tolerances on a very small board. The cabling connecting the array to the controller ran long enough, and carried a clock signal close enough to the data lines, that signal integrity became a real concern. And none of the downstream signal processing — the averaging, the FFT, the reflectance calculation — means anything if the raw data underneath it is noisy or misaligned.</p>
-</section>
+        <div class="experience-meta-grid">
+          <div class="experience-meta-item">
+            <span>CATEGORY</span>
+            <strong>Hardware / Embedded Systems</strong>
+          </div>
+          <div class="experience-meta-item">
+            <span>CLIENT</span>
+            <strong>Deng Audio Research</strong>
+          </div>
+          <div class="experience-meta-item">
+            <span>TEAM</span>
+            <strong>5-person capstone (AI-082)</strong>
+          </div>
+          <div class="experience-meta-item">
+            <span>TIMELINE</span>
+            <strong>2025 - 2026</strong>
+          </div>
+        </div>
 
-<section class="article-section" id="process">
-  <div class="article-kicker">02</div>
-  <h2>Engineering Process: Design, Iterate, Verify</h2>
+        <div class="experience-skills" aria-label="Skills">
+          <span class="experience-skill">Python</span>
+          <span class="experience-skill">C</span>
+          <span class="experience-skill">KiCAD</span>
+          <span class="experience-skill">SolidWorks</span>
+          <span class="experience-skill">PCBA</span>
+          <span class="experience-skill">Soldering</span>
+          <span class="experience-skill">Circuit Design/Debugging</span>
+          <span class="experience-skill">Electronic Testing</span>
+          <span class="experience-skill">Verification/Validation</span>
+        </div>
+      </header>
 
-  <h3>Choosing an architecture</h3>
-  <p>Before any part selection, the team compared three system architectures: an FPGA-only design, a microcontroller-only design, and a hybrid FPGA-plus-MCU design.</p>
+      <div class="experience-content">
 
-  <figure class="article-figure">
-    <div class="image-placeholder">Insert image here — <b>Design Document, Figure 2: "Embedded System Architecture Solutions"</b>. Diagram comparing the FPGA-only, MCU-only, and hybrid FPGA-MCU options.</div>
-    <figcaption>Figure: the three candidate embedded architectures we evaluated before committing to a design.</figcaption>
-  </figure>
+        <section class="experience-section">
+          <div class="experience-kicker experience-main-heading">OVERVIEW</div>
+          <p>
+            iHear2++ was a two-semester capstone project for Deng Audio Research, a client
+            developing tools to screen hearing health outside of a clinical audiology setting.
+            A five-person team was asked to build a low-cost, portable device that measures how
+            sound reflects inside the ear canal, a signal that can help flag hearing issues
+            without a full clinical exam.
+          </p>
+          <p>
+            A calibrated sweep from 20 Hz to 20 kHz plays down an acoustic tube pressed against
+            the ear. Five PDM MEMS microphones, spaced along the tube at positions set by the
+            client's acoustic model, each record the reflected sound. A control PCB built around
+            an STM32H723VGT6 reads all five channels in parallel and streams them over high-speed
+            USB to a PC, where software converts the PDM streams to PCM, averages repeated takes,
+            and computes the ear-canal reflectance.
+          </p>
 
-  <p>We ruled out an FPGA-only design early — FPGAs don't have native USB device support, so a compliant high-speed USB interface would have had to be built or licensed from scratch, adding cost and risk for little benefit. A hybrid FPGA-MCU design looked appealing at first, since FPGAs are well suited to high-speed acquisition, but since no signal processing actually needed to happen on the device itself (all of it runs on the PC), the FPGA's strengths would have gone unused. We settled on a microcontroller-only architecture, and selected the STM32H723VGT6 over a comparable STM32F7 part — trading the F7's simpler internal USB PHY for the H7's higher clock speed, more memory, and lower unit cost.</p>
+          <figure class="experience-figure">
+            <img src="images/ihear2/system-diagram.png"
+                 alt="System diagram showing the acoustic tube, five PDM microphones, control PCB, and PC">
+            <figcaption>
+              System-level view of the full signal path, from the microphone array to the PC.
+            </figcaption>
+          </figure>
 
-  <h3>Designing the microphone array — my primary contribution</h3>
-  <p>My main ownership on the project was the microphone subsystem: selecting the MEMS microphone, designing the PCB it sits on, and specifying every supporting component between the microphone and the controller. We needed a top-port, PDM-output microphone running off the same 3.3 V rail as the microcontroller, covering the full 20 Hz–20 kHz range, at a price that stayed reasonable across five units. After comparing five candidate parts, the SPK0641HT4H-1 came out ahead on cost and signal-to-noise ratio while meeting every hard requirement.</p>
+          <p>
+            The hard part was never a single block. Five synchronized, high-rate digital streams
+            had to reach the PC without dropping samples, the microphones had to sit at exact
+            positions, and clock and data signals had to travel down cables without corrupting
+            each other. Most of the project's decisions came down to protecting signal quality
+            from the microphone to the USB port.
+          </p>
+          <p>
+            The work spanned the whole stack, from board layout and cabling to firmware, filters,
+            the GUI, and the 3D-printed tube. This page focuses on the three pieces of hardware
+            that carried the most risk: the 4-layer control PCB, the 2-layer microphone PCBs, and
+            the cabling that connects them.
+          </p>
+        </section>
 
-  <figure class="article-figure">
-    <div class="image-placeholder">Insert image here — <b>Design Document, Figure 24</b> or <b>Deliverables Document, Figure 1: "MEMS Microphone PCB Schematic"</b>. Shows the microphone, bypass capacitor, and connector wiring.</div>
-    <figcaption>Figure: schematic for one of the five identical microphone PCBs.</figcaption>
-  </figure>
+        <section class="experience-section">
+          <div class="experience-kicker experience-main-heading">SYSTEM ARCHITECTURE</div>
+          <p>
+            Three architectures were compared before any parts were chosen: an FPGA-only design,
+            a microcontroller-only design, and a hybrid of the two. The FPGA-only option was ruled
+            out because FPGAs have no native USB device support, which would have meant building or
+            licensing a high-speed USB core. The hybrid looked appealing for high-speed acquisition,
+            but no signal processing needed to happen on the device, so the FPGA's strengths would
+            have gone unused. A microcontroller alone could handle both acquisition and
+            communication, so that is the design that moved forward.
+          </p>
+          <p>
+            PDM is a clock and a single data line, which looks a lot like SPI. That observation
+            shaped the whole design: five SPI peripherals in slave receive-only mode capture the five
+            microphones directly, each fed by a 3.072 MHz clock that gives 64x oversampling for
+            decimation to 48 kHz. The STM32H723VGT6 was selected over the STM32F723ZET6 for its
+            higher clock speed, larger memory, and lower unit cost ($5.86 versus $10.89). The
+            trade-off was that it needs an external ULPI transceiver for USB high-speed, a
+            complexity that was judged manageable and that shaped much of the control PCB.
+          </p>
+        </section>
 
-  <p>Each of the five microphones lives on its own small, identical PCB rather than all five sharing one larger board — a change from an earlier iteration, made so that a damaged unit could be swapped out cheaply instead of scrapping the whole array. The client's acoustic model required the microphones to sit just 7 mm apart, so board area was the binding constraint: I moved the bypass capacitor and connector to the back of the board, used vias placed directly under component pads, and mirrored the board orientation at alternating positions to fit the spacing requirement. The result is an 11.265 mm × 5.6 mm board.</p>
+        <section class="experience-section">
+          <div class="experience-kicker experience-main-heading">4-LAYER CONTROL PCB</div>
+          <p>
+            The control PCB is the hub of the system. It supplies clean power and clocks to five
+            microphones, captures their data on five parallel channels, and moves everything to the
+            PC over USB. Because the channels have to be captured in lockstep, layout decisions
+            mattered as much as component choices.
+          </p>
 
-  <figure class="article-figure figure-pair">
-    <div class="image-placeholder">Insert image here — <b>Deliverables Document, Figures 2–5</b>: MEMS Microphone PCB, top and bottom copper layout (and/or the 3D rendered model).</div>
-    <div class="image-placeholder">Insert image here — <b>Deliverables Document, Figure 7: "MEMS Microphone PCB Prototype (Front and Back)"</b>. Photo of the assembled, populated board.</div>
-  </figure>
-  <p class="article-figure" style="margin-top:-14px; font-size:.62rem; color:var(--dim);">Left: PCB layout / CAD render. Right: the populated prototype board, photographed after assembly.</p>
+          <h3>Schematic design</h3>
+          <p>
+            The schematic is organized into six blocks: microcontroller, USB interface, power,
+            LED indicators, clock network, and microphone interface. A 24 MHz active oscillator
+            provides the clock for both the STM32 and the USB3300 ULPI transceiver, chosen over a
+            passive crystal for reliable startup without fine tuning. An FSUSB42UMX switch lets the
+            same USB-C port carry high-speed data during operation and full-speed traffic for
+            programming, and a simple reset and boot circuit allows the bootloader to be entered
+            with a single button press.
+          </p>
+          <p>
+            Power comes from two 3.3 V regulators fed by 5 V USB. An LDL1117 supplies the
+            microcontroller and digital peripherals, while a separate LP5907 with under 6.5 µVrms of
+            output noise powers the oscillator, microphones, and clock buffer. Keeping those rails
+            apart stops digital switching noise from showing up as clock jitter or as noise in the
+            recordings.
+          </p>
+          <p>
+            The microphone clock is generated by the STM32's PLL and distributed by a CDCLVC1110
+            1:10 clock buffer with less than 50 ps of pin-to-pin skew, which is critical for
+            synchronized capture. Each microphone connects through its own USB-C receptacle
+            carrying clock, data, power, and ground, protected by low-capacitance TVS diode arrays
+            (0.85 pF) that guard against ESD without loading the high-speed signals.
+          </p>
 
-  <h3>Iterating on signal integrity</h3>
-  <p>The first working version of the array used unshielded cabling between the microphones and the control PCB. Each cable carries both a clock line (from the controller to the mic) and a data line (from the mic back to the controller) close together, and testing turned up a real problem: an oscilloscope on the data line showed roughly 1 Vpp of crosstalk bleeding in from the clock signal — enough to sit inside the STM32H7's undefined logic-level band (0.99 V–2.31 V) and risk being misread as a 1 or a 0.</p>
+          <figure class="experience-figure">
+            <img src="images/ihear2/control-pcb-schematic.png"
+                 alt="Control PCB schematic divided into microcontroller, USB, power, LED, clock, and microphone interface blocks">
+            <figcaption>
+              Control PCB schematic, divided into functional blocks.
+            </figcaption>
+          </figure>
 
-  <div class="stat-row">
-    <div><strong>~1 Vpp</strong><span>CROSSTALK, UNSHIELDED CABLE</span></div>
-    <div><strong>~80% ↓</strong><span>REDUCTION AFTER FIX</span></div>
-    <div><strong>0.99V–2.31V</strong><span>MCU'S UNDEFINED LOGIC BAND</span></div>
-  </div>
+          <h3>A stackup where every layer has a job</h3>
+          <p>
+            The board uses a 4-layer JLC04161H-7628 stackup, which kept cost low while allowing
+            practical trace widths for the impedance-controlled high-speed lines. Each layer was
+            given a single purpose so that sensitive signals stay separated from each other.
+          </p>
 
-  <figure class="article-figure figure-pair">
-    <div class="image-placeholder">Insert image here — <b>Design Document, Figure 22: "Unshielded USB-C Data Line Crosstalk"</b>. Oscilloscope capture, ~1 Vpp coupled onto the data line.</div>
-    <div class="image-placeholder">Insert image here — <b>Design Document, Figure 23: "Shielded USB-C Data Line Crosstalk"</b>. Oscilloscope capture after the fix, ~200–400 mVpp.</div>
-  </figure>
-  <p class="article-figure" style="margin-top:-14px; font-size:.62rem; color:var(--dim);">Before/after oscilloscope traces: unshielded cabling (left) versus shielded cabling with series termination (right).</p>
+          <div class="experience-stat-row">
+            <div class="experience-stat"><strong>Layer 1</strong><span>DATA LINES</span></div>
+            <div class="experience-stat"><strong>Layer 2</strong><span>GROUND PLANE</span></div>
+            <div class="experience-stat"><strong>Layer 3</strong><span>POWER</span></div>
+            <div class="experience-stat"><strong>Layer 4</strong><span>CLOCK LINES</span></div>
+          </div>
 
-  <p>We switched to shielded cable, and I added a 33 Ω series termination resistor on the data line to match impedance and suppress reflections, plus a 10 Ω resistor on the power line to dampen high-frequency ripple. Both resistors are soldered to a PCB receptacle rather than directly to the board, so the heat from hand-soldering a ¼ W resistor never reaches the sensitive MEMS microphone pads. The fix brought crosstalk down to around 200–400 mVpp — comfortably inside the safe logic-level range — and confirmed with the same oscilloscope test used to catch the original problem.</p>
+          <p>
+            Data and clock were placed on different layers so they are physically separated, which
+            reduces coupling between the two. The solid ground plane on layer 2 gives return currents
+            a short, low-inductance path directly beneath the traces, keeping loop area and noise
+            down and giving the decoupling capacitors a stable reference.
+          </p>
 
-  <h3>Mechanical integration</h3>
-  <p>The acoustic tube itself — 3D printed to a curvature and mic-position spec dictated by the client's reflectance model — was mechanically co-designed with the microphone boards, with each mic seated in its own pocket, aligned by a through-hole to the acoustic cavity and clamped by two uneven-height standoffs to account for the surface-mount parts on the back of each board.</p>
+          <div class="figure-grid">
+            <figure class="experience-figure">
+              <img src="images/ihear2/control-pcb-layer1.jpg" alt="Control PCB layer 1 copper layout" loading="lazy">
+              <figcaption>Layer 1: data lines.</figcaption>
+            </figure>
+            <figure class="experience-figure">
+              <img src="images/ihear2/control-pcb-layer2.jpg" alt="Control PCB layer 2 ground plane" loading="lazy">
+              <figcaption>Layer 2: ground plane.</figcaption>
+            </figure>
+            <figure class="experience-figure">
+              <img src="images/ihear2/control-pcb-layer3.jpg" alt="Control PCB layer 3 power routing" loading="lazy">
+              <figcaption>Layer 3: power.</figcaption>
+            </figure>
+            <figure class="experience-figure">
+              <img src="images/ihear2/control-pcb-layer4.jpg" alt="Control PCB layer 4 clock lines" loading="lazy">
+              <figcaption>Layer 4: clock lines.</figcaption>
+            </figure>
+          </div>
 
-  <figure class="article-figure">
-    <div class="image-placeholder">Insert image here — <b>Design Document, Figure 31: "Isometric View of the Acoustic Tube with the Mounting Mechanism"</b>. SolidWorks render of the full tube assembly.</div>
-    <figcaption>Figure: the 3D-printed acoustic tube with mounting pockets for all five microphone boards.</figcaption>
-  </figure>
+          <h3>Routing for timing</h3>
+          <p>
+            Synchronization is the whole point of the array, so every clock and data line between
+            the microphone connectors and the STM32 was length matched. The clock buffer sits as close
+            to the microcontroller as possible so the incoming clock trace stays short, and bypass
+            capacitors were placed directly at the power pins of each IC.
+          </p>
+          <p>
+            The ULPI transceiver was placed next to the STM32 and the oscillator, with its data lines
+            length matched, kept on a single reference plane, and routed with minimal vias. The
+            high-speed USB pair was routed differentially to a 90 Ω target, using a 0.22 mm trace
+            width and 0.15 mm spacing from the manufacturer's impedance calculator. Ground pours on
+            every layer and stitching vias near high-speed lines help keep EMI and inductance low,
+            and the regulator was placed away from fast-switching and sensitive lines.
+          </p>
 
-  <h3>Verification &amp; validation</h3>
-  <p>Verification and validation were treated as two different questions: verification asks whether the system was built correctly against spec; validation asks whether it performs well enough to be useful. One of the clearest verification results came from testing the averaging scheme used to reduce noise: taking multiple acquisitions and averaging them produced a measured 3.85× noise reduction (11.71 dB) across three recordings, close to the 4.77 dB theoretical prediction for a Gaussian noise channel — evidence that the averaging math in the software pipeline was implemented correctly.</p>
+          <figure class="experience-figure">
+            <img src="images/ihear2/control-pcb-3d.jpg"
+                 alt="3D render of the assembled control PCB" loading="lazy">
+            <figcaption>
+              3D render of the control PCB.
+            </figcaption>
+          </figure>
 
-  <p>Not every test passed cleanly, and I think that's worth including rather than glossing over. The reflectance coefficient magnitude is required to stay below 1 across the full 0–20 kHz range; one of our validation runs produced a plot with magnitude spikes well above that limit.</p>
+          <h3>Room to grow</h3>
+          <p>
+            Jumper headers let each microphone data line be routed to either an SPI or a DCMI
+            interface on the STM32. The client suggested that DCMI, which clocks every input from a
+            single source, could eliminate the clock skew risk that comes with five separate SPI
+            clocks. The board keeps both paths open, with all of those traces length matched to the
+            same 73 mm, so that idea can be explored without another board spin.
+          </p>
+        </section>
 
-  <figure class="article-figure">
-    <div class="image-placeholder">Insert image here — <b>Verification &amp; Validation Document, reflectance plot (Section 2.3, "Reflectance Plot Validation")</b>. Plot with magnitude exceeding 1 at several frequencies.</div>
-    <figcaption>Figure: a failed validation run — reflectance magnitude should stay under 1 across the full spectrum.</figcaption>
-  </figure>
+        <section class="experience-section">
+          <div class="experience-kicker experience-main-heading">2-LAYER MICROPHONE PCB</div>
+          <p>
+            Each of the five microphones sits on its own small, identical 2-layer board. An earlier
+            iteration placed all five on one larger board, but splitting them into separate modules
+            means a damaged microphone can be swapped out cheaply instead of scrapping the entire
+            array.
+          </p>
 
-  <p>We verified the DSP filters and algorithms independently and confirmed they were implemented as designed, which narrowed the discrepancy down to the raw measurement rather than the processing code. Since the client's own reference reflectance datasets are proprietary, we couldn't fully close the loop within the project timeline — but flagging the result rather than hiding it is what let the next phase of the project pick up exactly where it needed to.</p>
-</section>
+          <h3>Choosing the microphone</h3>
+          <p>
+            The array needed top-port, PDM-output microphones covering 20 Hz to 20 kHz, running from
+            the same 3.3 V rail as the microcontroller, at a price that holds up across five units.
+            Five candidates were compared on cost, sensitivity, signal-to-noise ratio, and supply
+            range. The SPK0641HT4H-1 met every hard requirement at the lowest cost of the group, with
+            a 64.5 dB signal-to-noise ratio.
+          </p>
 
-<section class="article-section" id="learned">
-  <div class="article-kicker">03</div>
-  <h2>Transferable Skills</h2>
+          <h3>Supporting circuitry</h3>
+          <p>
+            Each board carries a 0.1 µF bypass capacitor and a compact 2x2 header. The capacitor is
+            C0G/NP0 on purpose: Class II ceramic dielectrics can be piezoelectric and inject
+            microphonic noise into the signal path. Tying every microphone's select pin to power keeps
+            them all on the same clock edge and reduces the connection to four lines: clock, data,
+            power, and ground.
+          </p>
 
-  <ul>
-    <li><strong>Requirements-driven design.</strong> Every part I chose — the microphone, the bypass capacitor, the connector, the cable — traced back to a specific constraint from the client's spec or from the microcontroller's electrical characteristics, not a default or a guess.</li>
-    <li><strong>Closing the loop with data.</strong> The cable-shielding fix wasn't a hunch — it was measured with an oscilloscope before the change, calculated against the microcontroller's datasheet thresholds, and measured again after. That before/after discipline is something I now reach for by default.</li>
-    <li><strong>Trade-off analysis under real constraints.</strong> Architecture and part selection (FPGA vs. MCU, STM32H7 vs. F7) came down to weighing cost, power, complexity, and risk against each other, not just picking the "best" spec sheet.</li>
-    <li><strong>Rigor in verification — including reporting failure.</strong> Separating "was this built correctly" from "does this perform well enough" made it obvious when a result needed to be flagged rather than quietly reworked until it looked fine.</li>
-    <li><strong>Working across a stack, and across a team.</strong> My microphone-PCB scope only worked because it matched the control PCB's connector layout, the firmware's SPI timing, and the software's expectations for how the data would be packaged — which meant constantly syncing with four other people owning those other pieces.</li>
-  </ul>
-</section>
+          <figure class="experience-figure">
+            <img src="images/ihear2/mic-pcb-schematic.png"
+                 alt="Microphone PCB schematic with the MEMS microphone, bypass capacitor, and connector" loading="lazy">
+            <figcaption>
+              Schematic for one of the five identical microphone boards.
+            </figcaption>
+          </figure>
 
-</article>
-<div class="project-footer"><a class="back-next" href="../index.html#projects">← RETURN TO PROJECTS</a></div></div></main></body></html>
+          <h3>Fitting into 7 mm</h3>
+          <p>
+            The client's acoustic model requires the microphones to sit just 7 mm apart, which made
+            board area the binding constraint. The bypass capacitor and connector were moved to the
+            back of the board, opposite the microphone, with vias placed directly in component pads
+            wherever possible. The microphone is offset toward one side of the board, so alternating
+            boards can be mirrored to meet the spacing. The finished board measures 11.265 mm by
+            5.6 mm.
+          </p>
+
+          <div class="figure-grid">
+            <figure class="experience-figure">
+              <img src="images/ihear2/mic-pcb-3d-top.jpg" alt="3D render of the microphone PCB, microphone side" loading="lazy">
+              <figcaption>Microphone side.</figcaption>
+            </figure>
+            <figure class="experience-figure">
+              <img src="images/ihear2/mic-pcb-3d-bottom.jpg" alt="3D render of the microphone PCB, supporting component side" loading="lazy">
+              <figcaption>Supporting-component side.</figcaption>
+            </figure>
+          </div>
+
+          <div class="figure-grid narrow">
+            <figure class="experience-figure">
+              <img src="images/ihear2/mic-pcb-prototype-front.jpg" alt="Prototype microphone PCB, microphone side" loading="lazy">
+              <figcaption>Prototype, microphone side.</figcaption>
+            </figure>
+            <figure class="experience-figure">
+              <img src="images/ihear2/mic-pcb-prototype-back.jpg" alt="Prototype microphone PCB, supporting component side" loading="lazy">
+              <figcaption>Prototype, supporting-component side.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="experience-section">
+          <div class="experience-kicker experience-main-heading">CABLING AND SIGNAL INTEGRITY</div>
+          <p>
+            The cables between the control PCB and the microphones turned out to be one of the most
+            important parts of the design. Each one carries a 3 MHz clock out to the microphone and a
+            PDM data stream back, side by side, over roughly 50 cm.
+          </p>
+
+          <h3>Cable construction</h3>
+          <p>
+            Each microphone connects through a shielded USB-C to pigtail cable (DH-20UE0063-NH). The
+            USB-C plug mates with the control PCB, and the pigtail end connects to the microphone
+            board. Wires follow a fixed scheme: red for power, yellow for ground, green (D+) for the
+            clock going out, and white (D-) for the data coming back. The unused configuration
+            channel wire is tied to ground.
+          </p>
+
+          <h3>The crosstalk problem</h3>
+          <p>
+            The first version used unshielded cable, and testing showed a real problem. To measure it,
+            a signal generator drove a 3 MHz, 3.3 Vpp square wave onto the clock wire while an
+            oscilloscope watched the data wire. The acceptable limits came straight from the
+            microcontroller's datasheet: inputs are guaranteed low below 0.99 V (0.3 x VDD) and
+            guaranteed high above 2.31 V (0.7 x VDD), and anything in between can be misread.
+          </p>
+          <p>
+            With unshielded cable, about 1 V of the clock coupled onto the data line, right at the
+            edge of the undefined region and enough to corrupt bits. Switching to shielded cable
+            brought that down to about 200 mV, comfortably clear of both thresholds.
+          </p>
+
+          <div class="experience-stat-row">
+            <div class="experience-stat"><strong>~1 V</strong><span>CROSSTALK, UNSHIELDED</span></div>
+            <div class="experience-stat"><strong>~200 mV</strong><span>CROSSTALK, SHIELDED</span></div>
+            <div class="experience-stat"><strong>~80%</strong><span>REDUCTION</span></div>
+            <div class="experience-stat"><strong>0.99 V</strong><span>LOGIC LOW THRESHOLD</span></div>
+          </div>
+
+          <div class="figure-grid">
+            <figure class="experience-figure">
+              <img src="images/ihear2/crosstalk-unshielded.jpg"
+                   alt="Oscilloscope capture of crosstalk on the data line with unshielded cable" loading="lazy">
+              <figcaption>Unshielded cable (500 mV per division).</figcaption>
+            </figure>
+            <figure class="experience-figure">
+              <img src="images/ihear2/crosstalk-shielded.jpg"
+                   alt="Oscilloscope capture of crosstalk on the data line with shielded cable" loading="lazy">
+              <figcaption>Shielded cable (200 mV per division).</figcaption>
+            </figure>
+          </div>
+          <p class="figure-note">
+            Data-line crosstalk measured at the microphone end of the cable. Note the different
+            vertical scales.
+          </p>
+
+          <h3>Termination and thermal protection</h3>
+          <p>
+            Two axial resistors finish the job. A 33 Ω series resistor on the data line matches the
+            microphone's output impedance to the cable and suppresses reflections, while a 10 Ω
+            resistor on the power line damps high-frequency ripple picked up along the cable before it
+            can reach the microphone. Both resistors and the open wires are soldered to a 4-position
+            PCB receptacle instead of the board itself, so the heat from hand-soldering never reaches
+            the pads of the heat-sensitive MEMS microphone.
+          </p>
+          <p>
+            The setup has a known trade-off. Terminating closer to the microphone pad would improve
+            signal clarity, but that means a larger microphone board, and a smaller board is better
+            for the measurement. It is noted as an area for future improvement.
+          </p>
+        </section>
+
+        <section class="experience-section">
+          <div class="experience-kicker experience-main-heading">THE REST OF THE SYSTEM</div>
+          <p>
+            <strong>Mechanical.</strong> The acoustic tube was modeled in SolidWorks and 3D printed to
+            the client's curvature and microphone-position specification, with microphones at 40, 47,
+            100, 163, and 170 mm. Each position has a PCB pocket, a seating pocket, and a through-hole
+            into the acoustic cavity. Two standoffs of different heights clamp each board in place to
+            account for the parts on its back, and Teflon tape fills the tolerance gap to damp
+            vibration. A sheet metal aluminum chassis protects the control PCB and helps with EMI.
+          </p>
+
+          <div class="figure-grid">
+            <figure class="experience-figure">
+              <img src="images/ihear2/acoustic-tube.jpg" alt="Render of the acoustic tube with microphone mounting pockets" loading="lazy">
+              <figcaption>Acoustic tube with microphone mounts.</figcaption>
+            </figure>
+            <figure class="experience-figure">
+              <img src="images/ihear2/pcb-chassis.jpg" alt="Render of the aluminum control PCB chassis" loading="lazy">
+              <figcaption>Aluminum chassis for the control PCB.</figcaption>
+            </figure>
+          </div>
+
+          <p>
+            <strong>Firmware.</strong> Each SPI channel has its own circular DMA buffer, with
+            half-transfer and full-transfer interrupts feeding a job queue so no data is overwritten.
+            Every packet carries a header, a channel number, a 16-bit sequence number to detect
+            drops, and a CRC32 checksum, and an eight-buffer scheme keeps the USB stream flowing
+            through fluctuations in CPU load.
+          </p>
+          <p>
+            <strong>Software.</strong> On the PC, a three-stage filter chain (CIC, compensation FIR,
+            and DC blocking) converts PDM to PCM. A Python GUI controls acquisition, aligns repeated
+            takes with cross-correlation, averages them, and plots the waveforms. The reflectance is
+            then computed from an FFT of the five signals and a pseudo-inverse solution for the
+            incident and reflected waves.
+          </p>
+        </section>
+
+        <section class="experience-section">
+          <div class="experience-kicker experience-main-heading">VERIFICATION AND VALIDATION</div>
+          <p>
+            Testing separated two questions: verification asks whether the system was built correctly
+            against its requirements, and validation asks whether it performs well enough to be
+            useful. The cable crosstalk test above is one example of verification against a threshold
+            derived from a datasheet.
+          </p>
+          <p>
+            The PDM-to-PCM pipeline was sanity checked with synthetic data (all ones, all zeros, and
+            random bits), and multi-acquisition averaging was tested by comparing noise in the
+            pre-roll before the chirp. A five-take run reduced noise by 6.01 dB against a theoretical
+            6.99 dB. A three-take run came in well above its theoretical 4.77 dB, a reminder that real
+            results depend on the noise in the measurement window and environment as well as on the
+            averaging itself.
+          </p>
+          <p>
+            Not every result passed cleanly. The reflectance magnitude must stay below 1 across the
+            full spectrum, and one validation run produced a plot slightly above 1 at some
+            frequencies, so it was marked as incorrect. The DSP algorithms and filters were sent to
+            Deng Audio Research and confirmed to be working. The client's reference reflectance
+            datasets are proprietary, so the loop could not be fully closed within the project
+            timeline. Reporting that honestly gives the next phase a clear place to start.
+          </p>
+        </section>
+
+        <section class="experience-section">
+          <div class="experience-kicker experience-main-heading">WHAT I LEARNED</div>
+          <p>
+            iHear2++ was a reminder that the small details decide whether a system works. One
+            unshielded cable could undo an otherwise sound design, and a 33 Ω resistor turned out to
+            matter as much as a 550 MHz microcontroller. Careful choices about layers, cables, and
+            components are what let the clever parts of the system do their job.
+          </p>
+          <p>
+            Working across the whole stack was the most rewarding part. A layout decision changed what
+            the firmware could rely on, a cable choice changed what the software could trust, and a
+            tube dimension changed what the microphone board could look like. Staying in constant
+            conversation with the teammates who owned the neighboring pieces was as much a part of the
+            engineering as any schematic.
+          </p>
+          <p>
+            The project also built a habit of measuring before and after. The shielding fix was not a
+            hunch: the limits came from the datasheet, the problem was reproduced on an oscilloscope,
+            and the fix was confirmed on the same setup. Just as important was learning that a test
+            that does not pass is still useful, as long as it is reported clearly.
+          </p>
+          <p>
+            Finally, it was a lesson in leaving room for whoever comes next, through jumpers for a
+            future capture interface, documented trade-offs, and honest notes on what is still open.
+            There is something quietly satisfying about seeing five clean channels arrive in the GUI
+            after all the layout, cabling, and debugging that made it possible.
+          </p>
+        </section>
+
+      </div>
+
+      <div class="project-footer">
+        <a class="back-next" href="../index.html#projects">← RETURN TO PROJECTS</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
