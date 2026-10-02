@@ -41,6 +41,12 @@
     @media (max-width: 560px) {
       .figure-grid { grid-template-columns: 1fr; }
     }
+
+    .experience-figure img { cursor: zoom-in; }
+    .image-lightbox {display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.94);padding:32px;align-items:center;justify-content:center}
+    .image-lightbox.open {display:flex}
+    .image-lightbox img {max-width:96vw;max-height:92vh;object-fit:contain;cursor:zoom-out}
+    .image-lightbox-close {position:fixed;top:18px;right:24px;color:#fff;font-size:34px;background:none;border:0;cursor:pointer}
   </style>
 </head>
 <body>
@@ -517,5 +523,15 @@
       </div>
     </div>
   </main>
+
+  <div class="image-lightbox" id="image-lightbox" aria-hidden="true"><button class="image-lightbox-close" aria-label="Close expanded image">×</button><img src="" alt=""></div>
+  <script>
+    const lightbox=document.getElementById('image-lightbox');
+    const lightboxImg=lightbox.querySelector('img');
+    document.querySelectorAll('.experience-figure img').forEach(img=>{img.addEventListener('click',()=>{lightboxImg.src=img.src;lightboxImg.alt=img.alt;lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');});});
+    function closeLightbox(){lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');lightboxImg.src='';}
+    lightbox.addEventListener('click',closeLightbox);
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+  </script>
 </body>
 </html>
